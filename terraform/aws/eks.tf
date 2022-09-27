@@ -62,6 +62,7 @@ resource aws_subnet "eks_subnet2" {
 }
 
 resource aws_eks_cluster "eks_cluster" {
+  # oak9: aws_eks_cluster.vpc_config.security_group_ids does not have VPC security groups defined for secure access control
   name     = local.eks_name.value
   role_arn = "${aws_iam_role.iam_for_eks.arn}"
 
