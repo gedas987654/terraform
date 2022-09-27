@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "data" {
   # bucket does not have access logs
   # bucket does not have versioning
   bucket        = "${local.resource_prefix.value}-data"
-  acl           = "public-read"
+  acl           = "public-read" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   force_destroy = true
   tags = {
     Name        = "${local.resource_prefix.value}-data"
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "financials" {
   # bucket does not have access logs
   # bucket does not have versioning
   bucket        = "${local.resource_prefix.value}-financials"
-  acl           = "private"
+  acl           = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   force_destroy = true
   tags = {
     Name        = "${local.resource_prefix.value}-financials"
@@ -40,7 +40,7 @@ resource "aws_s3_bucket" "operations" {
   # bucket is not encrypted
   # bucket does not have access logs
   bucket = "${local.resource_prefix.value}-operations"
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   versioning {
     enabled = true
   }
@@ -55,7 +55,7 @@ resource "aws_s3_bucket" "operations" {
 resource "aws_s3_bucket" "data_science" {
   # bucket is not encrypted
   bucket = "${local.resource_prefix.value}-data-science"
-  acl    = "private"
+  acl    = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   versioning {
     enabled = true
   }

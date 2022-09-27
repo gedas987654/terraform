@@ -168,7 +168,7 @@ resource "aws_flow_log" "vpcflowlogs" {
   }
 }
 
-resource "aws_s3_bucket" "flowbucket" {
+resource "aws_s3_bucket" "flowbucket" { # oak9:  should be set to any of publicread, publicreadwrite, authenticateread
   bucket        = "${local.resource_prefix.value}-flowlogs"
   force_destroy = true
 
