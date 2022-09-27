@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "financials" {
   # bucket does not have access logs
   # bucket does not have versioning
   bucket        = "${local.resource_prefix.value}-financials"
-  acl           = "private"
+  acl           = "private" # oak9: acl should be set to any of publicread, publicreadwrite, authenticateread
   force_destroy = true
   tags = {
     Name        = "${local.resource_prefix.value}-financials"
